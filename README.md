@@ -15,7 +15,7 @@ A mutable, self-balancing IntervalArray for Python 2.
 * `array.query(String)`: Query on whether a specific string is inside the set of ranges being
 tracked.
 
-** See more examples in example.py **
+**See more examples in example.py**
 
 ### Note
 Currently the API supports only closed ranges - "[]". Support for open ranges - "()" will be added soon.
