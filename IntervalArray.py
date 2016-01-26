@@ -1,8 +1,11 @@
+from Interval import Interval
+
 class IntervalArray(object):
 
     def __init__(self, intervals_list = None):
         self.list = []
         if intervals_list is not None:
+            self.list = intervals_list
             self.merge_overlapping()
 
     def merge_overlapping(self):
@@ -19,13 +22,18 @@ class IntervalArray(object):
 
 
     def remove_interval(self, interval):
+        i = None
         index = binary_search_delete(self.list, interval.begin)
 
         results = self.list[:index]
         if index > 0:
             if interval.begin < results[-1].end:
                 if results[-1].begin != interval.begin:
+                    if interval.end < results[-1].end:
+                        i = Interval("['%s','%s']" % (interval.end, results[-1].end))
                     results[-1].end = interval.begin
+                    if i:
+                        results.append(i)
                 else:
                     if interval.end >= results[-1].end:
                         results.pop()
