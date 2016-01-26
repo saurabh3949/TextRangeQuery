@@ -1,8 +1,9 @@
 class IntervalArray(object):
 
-    def __init__(self, intervals_list):
-        self.list = intervals_list
-        self.merge_overlapping()
+    def __init__(self, intervals_list = None):
+        self.list = []
+        if intervals_list is not None:
+            self.merge_overlapping()
 
     def merge_overlapping(self):
         intervals = sorted(self.list)
@@ -67,6 +68,9 @@ class IntervalArray(object):
             return True
         else:
             return False
+
+    def __repr__(self):
+        return str(self.list)
 
 
 # Helper function
